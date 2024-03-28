@@ -177,6 +177,13 @@
             <artifactId>hibernate-validator</artifactId>
             <version>8.0.1.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        <version>1.9.8</version>
+    </dependency>
+
 	</dependencies>
 
 	<build>
