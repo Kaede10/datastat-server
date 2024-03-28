@@ -8,7 +8,6 @@ MAINTAINER zhongjun <jun.zhongjun2@gmail.com>
 RUN mkdir -p /var/lib/ds
 WORKDIR /var/lib/ds
 
-
 RUN yum install -y wget \
     && wget https://mirrors-i.tuna.tsinghua.edu.cn/Adoptium/17/jdk/x64/linux/OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz \
     && tar -zxvf OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz \
@@ -24,9 +23,9 @@ ENV PATH=$MAVEN_HOEM/bin:$PATH
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
-RUN git clone -b ${BRANCH} https://github.com/opensourceways/datastat-server && \
-        cd datastat-server && \
-        mvn clean install package -Dmaven.test.skip && \
+WORKDIR /var/lib/ds/datastat-server
+CPOY . /var/lib/ds
+RUN mvn clean install package -Dmaven.test.skip && \
         mv ./target/ds-0.0.1-SNAPSHOT.jar ../ds.jar
 
 RUN useradd -u 1000 datastat -s /bin/bash -m -U && \
