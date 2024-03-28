@@ -24,7 +24,7 @@ ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
 WORKDIR /var/lib/ds/datastat-server
-CPOY . /var/lib/ds
+COPY . /var/lib/ds
 RUN mvn clean install package -Dmaven.test.skip && \
         mv ./target/ds-0.0.1-SNAPSHOT.jar ../ds.jar
 
